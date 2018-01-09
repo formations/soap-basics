@@ -55,11 +55,9 @@
           Add the XML-Schema namespace in the relevant top element tag. If you don't remember the namespace, check the <a href="http://www.w3.org/TR/xmlschema-1/#normative-schemaSchema" target="_blank">W3C specification</a>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -70,11 +68,11 @@
           Choose and set your own schema namespace. Remember that it has to be a URI, so either a URN or URL. Usually, a namespace is relevant to your organization.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  <strong>targetNamespace="urn:unige:cui:library:book:2015"
+  elementFormDefault="qualified"</strong>&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -85,11 +83,13 @@
           In this new namespace, create an element with the name <code>book</code>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:book:2015"
+  elementFormDefault="qualified"&gt;
+  <strong>&lt;element name="book"&gt;
+  &lt;/element&gt;</strong>
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -113,11 +113,17 @@
           <code>author</code> and <code>publisher</code> should be set as <code>string</code> (for now)
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:book:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;element name="book"&gt;
+    <strong>&lt;all&gt;
+      &lt;element name="author" type="string" minOccurs="0"/&gt;
+      &lt;element name="publisher" type="string" minOccurs="0"/&gt;
+    &lt;/all&gt;</strong>
+  &lt;/element&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -128,11 +134,19 @@
           <code>name</code> and <code>description</code> are pretty evident
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:book:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;element name="book"&gt;
+    &lt;all&gt;
+      &lt;element name="author" type="string" minOccurs="0"/&gt;
+      &lt;element name="publisher" type="string" minOccurs="0"/&gt;
+      <strong>&lt;element name="name" type="string"/&gt;
+      &lt;element name="description" type="string" minOccurs="0"/&gt;</strong>
+    &lt;/all&gt;
+  &lt;/element&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -143,11 +157,20 @@
           Find the correct data type for <code>publicationDate</code>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:book:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;element name="book"&gt;
+    &lt;all&gt;
+      &lt;element name="author" type="string" minOccurs="0"/&gt;
+      &lt;element name="publisher" type="string" minOccurs="0"/&gt;
+      &lt;element name="name" type="string"/&gt;
+      &lt;element name="description" type="string" minOccurs="0"/&gt;
+      <strong>&lt;element name="publicationDate" type="date" minOccurs="0"/&gt;</strong>
+    &lt;/all&gt;
+  &lt;/element&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -158,11 +181,27 @@
           <code>isbn</code> is an <a href=https://en.wikipedia.org/wiki/International_Standard_Book_Number" target="_blank">ISBN-13</a>. Design its datatype accordingly.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:book:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;element name="book"&gt;
+    &lt;all&gt;
+      <strong>&lt;element name="isbn"&gt;
+        &lt;simpleType&gt;
+          &lt;restriction base="string"&gt;
+            &lt;pattern value="[0-9]{13}"/&gt;
+          &lt;/restriction&gt;
+        &lt;/simpleType&gt;
+      &lt;/element&gt;</strong>
+      &lt;element name="author" type="string" minOccurs="0"/&gt;
+      &lt;element name="publisher" type="string" minOccurs="0"/&gt;
+      &lt;element name="name" type="string"/&gt;
+      &lt;element name="description" type="string" minOccurs="0"/&gt;
+      &lt;element name="publicationDate" type="date" minOccurs="0"/&gt;
+    &lt;/all&gt;
+  &lt;/element&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -173,11 +212,27 @@
           Refactor to create a dedicated type and set is as the type of <code>isbn</code> .
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:book:2015"
+  xmlns:tns="urn:unige:cui:library:book:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;element name="book"&gt;
+    &lt;all&gt;
+      <strong>&lt;element name="isbn" type="tns:isbnType"&gt;</strong>
+      &lt;element name="author" type="string" minOccurs="0"/&gt;
+      &lt;element name="publisher" type="string" minOccurs="0"/&gt;
+      &lt;element name="name" type="string"/&gt;
+      &lt;element name="description" type="string" minOccurs="0"/&gt;
+      &lt;element name="publicationDate" type="date" minOccurs="0"/&gt;
+    &lt;/all&gt;
+  &lt;/element&gt;
+  <strong>&lt;simpleType name="isbnType"&gt;
+    &lt;restriction base="string"&gt;
+      &lt;pattern value="[0-9]{13}"/&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;</strong>
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -188,11 +243,35 @@
           <code>formatType</code> is an enumeration whose value can be either <code>ebook</code>, <code>paperback</code> or <code>hardcover</code>. Create the type and add a new element of this type to <code>book</code>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:book:2015"
+  xmlns:tns="urn:unige:cui:library:book:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;element name="book"&gt;
+    &lt;all&gt;
+      &lt;element name="isbn" type="tns:isbnType"&gt;
+      &lt;element name="author" type="string" minOccurs="0"/&gt;
+      &lt;element name="publisher" type="string" minOccurs="0"/&gt;
+      &lt;element name="name" type="string"/&gt;
+      &lt;element name="description" type="string" minOccurs="0"/&gt;
+      &lt;element name="publicationDate" type="date" minOccurs="0"/&gt;
+      <strong>&lt;element name="format" type="tns:formatType"/&gt;</strong>
+    &lt;/all&gt;
+  &lt;/element&gt;
+  &lt;simpleType name="isbnType"&gt;
+    &lt;restriction base="string"&gt;
+      &lt;pattern value="[0-9]{13}"/&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+  <strong>&lt;simpleType name="formatType"&gt;
+    &lt;restriction base="string"&gt;
+      &lt;enumeration value="ebook"/&gt;
+      &lt;enumeration value="paperback"/&gt;
+      &lt;enumeration value="hardcover"/&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;</strong>
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -203,11 +282,37 @@
           Finally, refactor the existing XML-Schema from a <code>book</code> element defining an anonymous type to define a <code>bookType</code> type in its own right. The <code>book</code> element should use this new type.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:book:2015"
+  xmlns:tns="urn:unige:cui:library:book:2015"
+  elementFormDefault="qualified"&gt;
+  <strong>&lt;complexType name="bookType"&gt;</strong>
+    &lt;all&gt;
+      &lt;element name="isbn" type="tns:isbnType"&gt;
+      &lt;element name="author" type="string" minOccurs="0"/&gt;
+      &lt;element name="publisher" type="string" minOccurs="0"/&gt;
+      &lt;element name="name" type="string"/&gt;
+      &lt;element name="description" type="string" minOccurs="0"/&gt;
+      &lt;element name="publicationDate" type="date" minOccurs="0"/&gt;
+      &lt;element name="format" type="tns:formatType"/&gt;
+    &lt;/all&gt;
+  &lt;/complexType&gt;
+  &lt;simpleType name="isbnType"&gt;
+    &lt;restriction base="string"&gt;
+      &lt;pattern value="[0-9]{13}"/&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+  &lt;simpleType name="formatType"&gt;
+    &lt;restriction base="string"&gt;
+      &lt;enumeration value="ebook"/&gt;
+      &lt;enumeration value="paperback"/&gt;
+      &lt;enumeration value="hardcover"/&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+  <strong>&lt;element name="book" type="tns:bookType"/&gt;</strong>
+&lt;/schema&gt;
+</pre>
         </div>
       </div>
       <div class="row">
@@ -218,11 +323,15 @@
           Create a new XML document <code>book.xml</code> that uses the newly created XML-Schema. Take any book as an example; if you don't have idea, check <a href="http://www.amazon.com/Mice-Men-John-Steinbeck/dp/0140177396/" target="_blank">this one</a>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;book xmlns="urn:unige:cui:library:book:2015"&gt;
+  &lt;isbn&gt;9780749717100&lt;/isbn&gt;
+  &lt;name&gt;Of Mice and Men&lt;/name&gt;
+  &lt;author&gt;John Steinbeck&lt;/author&gt;
+  &lt;publicationDate&gt;1993-09-01&lt;/publicationDate&gt;
+  &lt;description&gt;&lt;![CDATA[A controversial...]]&gt;&lt;/description&gt;
+  &lt;format&gt;paperback&lt;/format&gt;
+&lt;/book&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -254,11 +363,9 @@
           Add the XML-Schema namespace in the relevant top element tag.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -269,11 +376,11 @@
           Choose and set your own schema namespace, in accordance to the namespace of the previous schema.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  <strong>targetNamespace="urn:unige:cui:library:user:2015"
+  elementFormDefault="qualified"</strong>&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -284,11 +391,13 @@
           In this new namespace, create a type with the name <code>userType</code>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:user:2015"
+  elementFormDefault="qualified"&gt;
+  <strong>&lt;complexType name="userType"&gt;
+  &lt;/complexType&gt;</strong>
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -312,11 +421,16 @@
           <code>id</code> should be unique
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:user:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;complexType name="userType"&gt;
+    <strong>&lt;all&gt;
+      &lt;element name="id" type="ID"/&gt;
+    &lt;/all&gt;</strong>
+  &lt;/complexType&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -327,11 +441,18 @@
           <code>firstName</code> and <code>lastName</code> are pretty self-evident
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:user:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;complexType name="userType"&gt;
+    &lt;all&gt;
+      &lt;element name="id" type="ID"/&gt;
+      <strong>&lt;element name="firstName" type="string" /&gt;
+      &lt;element name="lastName" type="string" /&gt;</strong>
+    &lt;/all&gt;
+  &lt;/complexType&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -358,11 +479,9 @@
           Add the XML-Schema namespace in the relevant top element tag.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -373,11 +492,11 @@
           Choose and set your own schema namespace, in accordance to the namespace of the two previous schemas.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  <strong>targetNamespace="urn:unige:cui:library:2015"
+  elementFormDefault="qualified"</strong>&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -388,11 +507,13 @@
           In this new namespace, create a type with the name <code>libraryType</code>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:2015"
+  elementFormDefault="qualified"&gt;
+  <strong>&lt;complexType name="libraryType"&gt;
+  &lt;/complexType&gt;</strong>
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -403,11 +524,16 @@
           Add a new element with name <code>id</code>. It should be unique in the document. Don't forget to think about its cardinality.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:unige:cui:library:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;complexType name="libraryType"&gt;
+    <strong>&lt;all&gt;
+      &lt;element name="id" type="ID"/&gt;
+    &lt;/all&gt;</strong>
+  &lt;/complexType&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -418,11 +544,20 @@
           Add a new <code>book</code> element of type <code>bookType</code> to this new <code>libraryType</code>; remember to reference the correct namespace.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  <strong>xmlns:b="urn:unige:cui:library:book:2015"</strong>
+  targetNamespace="urn:unige:cui:library:2015"
+  elementFormDefault="qualified"&gt;
+  <strong>&lt;import schemaLocation="book.xsd"
+    namespace="urn:unige:cui:library:book:2015"/&gt;</strong>
+  &lt;complexType name="libraryType"&gt;
+    &lt;all&gt;
+      &lt;element name="id" type="ID"/&gt;
+      <strong>&lt;element name="book" type="b:bookType"/&gt;</strong>
+    &lt;/all&gt;
+  &lt;/complexType&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -433,11 +568,21 @@
           Set the correct cardinality on the previous <code>book</code> element.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  <strong>xmlns:b="urn:unige:cui:library:book:2015"</strong>
+  targetNamespace="urn:unige:cui:library:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;import schemaLocation="book.xsd"
+    namespace="urn:unige:cui:library:book:2015"/&gt;
+  &lt;complexType name="libraryType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="id" type="ID"/&gt;
+      &lt;element name="book" type="b:bookType"
+        <strong>minOccurs="0" maxOccurs="unbounded"</strong>/&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -448,11 +593,25 @@
           Add a new <code>user</code> element of type <code>userType</code> to this new <code>libraryType</code>; remember to reference the correct namespace.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:b="urn:unige:cui:library:book:2015"
+  <strong>xmlns:u="urn:unige:cui:library:user:2015"</strong>
+  targetNamespace="urn:unige:cui:library:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;import schemaLocation="book.xsd"
+    namespace="urn:unige:cui:library:book:2015"/&gt;
+  <strong>&lt;import schemaLocation="user.xsd"
+    namespace="urn:unige:cui:library:user:2015"/&gt;</strong>
+  &lt;complexType name="libraryType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="id" type="ID"/&gt;
+      &lt;element name="book" type="b:bookType"
+        minOccurs="0" maxOccurs="unbounded"/&gt;
+      <strong>&lt;element name="user" type="b:userType"/&gt;</strong>
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -463,11 +622,24 @@
           Set the correct cardinality on the previous <code>user</code> element.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:b="urn:unige:cui:library:book:2015"
+  <strong>xmlns:u="urn:unige:cui:library:user:2015"</strong>
+  targetNamespace="urn:unige:cui:library:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;import schemaLocation="book.xsd"
+    namespace="urn:unige:cui:library:book:2015"/&gt;
+  &lt;complexType name="libraryType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="id" type="ID"/&gt;
+      &lt;element name="book" type="b:bookType"
+        minOccurs="0" maxOccurs="unbounded"/&gt;
+      &lt;element name="user" type="b:userType"
+        <strong>minOccurs="0" maxOccurs="unbounded"</strong>/&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -478,11 +650,26 @@
           Create a new element with the name <code>library</code> and of type <code>libraryType</code>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  <strong>xmlns:tns="urn:unige:cui:library:2015"</strong>
+  xmlns:b="urn:unige:cui:library:book:2015"
+  xmlns:u="urn:unige:cui:library:user:2015"
+  targetNamespace="urn:unige:cui:library:2015"
+  elementFormDefault="qualified"&gt;
+  &lt;import schemaLocation="book.xsd"
+    namespace="urn:unige:cui:library:book:2015"/&gt;
+  &lt;complexType name="libraryType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="id" type="ID"/&gt;
+      &lt;element name="book" type="b:bookType"
+        minOccurs="0" maxOccurs="unbounded"/&gt;
+      &lt;element name="user" type="b:userType"
+        minOccurs="0" maxOccurs="unbounded"/&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+  <strong>&lt;element name="library" type="tns:libraryType"/&gt;</strong>
+&lt;/schema&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -493,11 +680,25 @@
           Create a new XML document <code>library.xml</code> that uses the newly created XML-Schema.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;library xmlns="urn:unige:cui:library:2015"
+    xmlns:b="urn:unige:cui:library:book:2015"
+    xmlns:u="urn:unige:cui:library:user:2015"&gt;
+  &lt;id&gt;BibliothequeCUI&lt;/id&gt;
+  &lt;book&gt;
+    &lt;b:isbn&gt;9780749717100&lt;/b:isbn&gt;
+    &lt;b:name&gt;Of Mice and Men&lt;/b:name&gt;
+    &lt;b:author&gt;John Steinbeck&lt;/b:author&gt;
+    &lt;b:publicationDate&gt;1993-09-01&lt;/b:publicationDate&gt;
+    &lt;b:description&gt;&lt;![CDATA[A controversial...]]&gt;&lt;/b:description&gt;
+    &lt;b:format&gt;paperback&lt;/b:format&gt;
+  &lt;/book&gt;
+  &lt;user&gt;
+    &lt;u:id&gt;camilletardy&lt;/u:id&gt;
+    &lt;u:firstName&gt;Camille&lt;/u:firstName&gt;
+    &lt;u:lastName&gt;Tardy&lt;/u:lastName&gt;
+  &lt;/user&gt;
+&lt;/library&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -524,11 +725,9 @@
           Add the WSDL namespace in the relevant top element tag.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;definitions xmlns="http://schemas.xmlsoap.org/wsdl/"&gt;
+&lt;/definitions&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -551,11 +750,11 @@
           Create such a message and name it <code>borrow_request</code>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;definitions xmlns="http://schemas.xmlsoap.org/wsdl/"&gt;
+  <strong>&lt;message name="borrow_request"&gt;
+  &lt;/message&gt;</strong>
+&lt;/definitions&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -566,11 +765,17 @@
           Add all the attributes described above. Define the required type for each attribute. Don't forget about the namespace.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    <strong>xmlns:l="urn:unige:cui:library:2015"
+    xmlns:u="urn:unige:cui:library:user:2015"
+    xmlns:b="urn:unige:cui:library:book:2015"</strong>&gt;
+  &lt;message name="borrow_request"&gt;
+    <strong>&lt;part name="library" type="l:libraryType" /&gt;
+    &lt;part name="user" type="u:userType" /&gt;
+    &lt;part name="book" type="b:bookType" /&gt;</strong>
+  &lt;/message&gt;
+&lt;/definitions&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -581,11 +786,19 @@
           Now create the response <code>message</code>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:l="urn:unige:cui:library:2015"
+    xmlns:u="urn:unige:cui:library:user:2015"
+    xmlns:b="urn:unige:cui:library:book:2015"&gt;
+  &lt;message name="borrow_request"&gt;
+    &lt;part name="library" type="l:libraryType"/&gt;
+    &lt;part name="user" type="u:userType"/&gt;
+    &lt;part name="book" type="b:bookType"/&gt;
+  &lt;/message&gt;
+  <strong>&lt;message name="borrow_response"&gt;
+  &lt;/message&gt;</strong>
+&lt;/definitions&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -596,11 +809,20 @@
           In a real-world service, the response would need to be descriptive, especially in the case of a failure. For now, just return a <code>boolean</code>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:l="urn:unige:cui:library:2015"
+    xmlns:u="urn:unige:cui:library:user:2015"
+    xmlns:b="urn:unige:cui:library:book:2015"&gt;
+  &lt;message name="borrow_request"&gt;
+    &lt;part name="library" type="l:libraryType"/&gt;
+    &lt;part name="user" type="u:userType"/&gt;
+    &lt;part name="book" type="b:bookType"/&gt;
+  &lt;/message&gt;
+  &lt;message name="borrow_response"&gt;
+    <strong>&lt;part name="return" type="boolean"/&gt;</strong>
+  &lt;/message&gt;
+&lt;/definitions&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -611,11 +833,24 @@
           Now design the <code>portType</code> and name it <code>LibraryPort</code>. Remember that port types are logical groupings. In this case, it's composed of a single <code>operation</code>. Name it <code>borrow</code>.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:l="urn:unige:cui:library:2015"
+    xmlns:u="urn:unige:cui:library:user:2015"
+    xmlns:b="urn:unige:cui:library:book:2015"&gt;
+  &lt;message name="borrow_request"&gt;
+    &lt;part name="library" type="l:libraryType"/&gt;
+    &lt;part name="user" type="u:userType"/&gt;
+    &lt;part name="book" type="b:bookType"/&gt;
+  &lt;/message&gt;
+  &lt;message name="borrow_response"&gt;
+    &lt;part name="return" type="boolean"/&gt;
+  &lt;/message&gt;
+  <strong>&lt;portType name="LibraryPort"&gt;
+    &lt;operation name="borrow"&gt;
+    &lt;/operation&gt;
+  &lt;/portType&gt;</strong>
+&lt;/definitions&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -632,11 +867,26 @@
           Set the <code>input</code> to the previously designed request and the <code>output</code> to the previous response. Leave the <code>fault</code> out for this workshop.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:l="urn:unige:cui:library:2015"
+    xmlns:u="urn:unige:cui:library:user:2015"
+    xmlns:b="urn:unige:cui:library:book:2015"&gt;
+  &lt;message name="borrow_request"&gt;
+    &lt;part name="library" type="l:libraryType"/&gt;
+    &lt;part name="user" type="u:userType"/&gt;
+    &lt;part name="book" type="b:bookType"/&gt;
+  &lt;/message&gt;
+  &lt;message name="borrow_response"&gt;
+    &lt;part name="return" type="boolean"/&gt;
+  &lt;/message&gt;
+  &lt;portType name="LibraryPort"&gt;
+    &lt;operation name="borrow"&gt;
+      <strong>&lt;input message="borrow_request"/&gt;
+      &lt;output message="borrow_response"/&gt;</strong>
+    &lt;/operation&gt;
+  &lt;/portType&gt;
+&lt;/definitions&gt;</pre>
         </div>
       </div>
       <div class="row">
@@ -647,10 +897,44 @@
           The final step is to bind each WSDL element to its SOAP counterpart. Use the document literal style.
         </div>
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              Put result here (replace panel)
-            </div>
-          </div>
+          <pre>&lt;?xml version="1.0"?&gt;
+&lt;definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:l="urn:unige:cui:library:2015"
+    xmlns:u="urn:unige:cui:library:user:2015"
+    xmlns:b="urn:unige:cui:library:book:2015"&gt;
+  &lt;message name="borrow_request"&gt;
+    &lt;part name="library" type="l:libraryType"/&gt;
+    &lt;part name="user" type="u:userType"/&gt;
+    &lt;part name="book" type="b:bookType"/&gt;
+  &lt;/message&gt;
+  &lt;message name="borrow_response"&gt;
+    &lt;part name="return" type="boolean"/&gt;
+  &lt;/message&gt;
+  &lt;portType name="LibraryPort"&gt;
+    &lt;operation name="borrow"&gt;
+      &lt;input message="borrow_request"/&gt;
+      &lt;output message="borrow_response"/&gt;
+    &lt;/operation&gt;
+  &lt;/portType&gt;
+  <strong>&lt;binding name="LibraryBinding" type="tns:LibraryPort"&gt;
+    &lt;soap:binding style="document"
+      transport="http://schemas.xmlsoap.org/soap/http"/&gt;
+    &lt;operation name="borrow"&gt;
+      &lt;soap:operation soapAction="" /&gt;
+      &lt;input&gt;
+        &lt;soap:body use="literal"/&gt;
+      &lt;/input&gt;
+      &lt;output&gt;
+        &lt;soap:body use="literal"/&gt;
+      &lt;/output&gt;
+    &lt;/operation&gt;
+  &lt;/binding&gt;
+  &lt;service name="LibraryService"&gt;
+    &lt;port name="LibraryServicePort" binding="tns:LibraryBinding"&gt;
+      &lt;soap:address location="https://unige.ch/cui/library"/&gt;
+    &lt;/port&gt;
+  &lt;/service&gt;</strong>
+&lt;/definitions&gt;
+</pre>
         </div>
       </div>

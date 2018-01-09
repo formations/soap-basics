@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:l="urn:unige:cui:library:2015"
+    xmlns:u="urn:unige:cui:library:user:2015"
+    xmlns:b="urn:unige:cui:library:book:2015"
+    targetNamespace="urn:unige:cui:library:borrow"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="urn:unige:cui:library:borrow">
+  <message name="borrow_request">
+    <part name="library" type="l:libraryType"/>
+    <part name="user" type="u:userType"/>
+    <part name="book" type="b:bookType"/>
+  </message>
+  <message name="borrow_response">
+    <part name="return" type="boolean"/>
+  </message>
+  <portType name="LibraryPort">
+    <operation name="borrow">
+      <input message="borrow_request"/>
+      <output message="borrow_response"/>
+    </operation>
+  </portType>
+  <binding name="LibraryBinding" type="tns:LibraryPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="borrow">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="LibraryService">
+    <port name="LibraryServicePort" binding="tns:LibraryBinding">
+      <soap:address location="https://unige.ch/cui/library"/>
+    </port>
+  </service>
+</definitions>
