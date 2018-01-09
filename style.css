@@ -1,0 +1,28 @@
+.row {
+    margin-bottom: 5px;
+}
+.task:before {
+  counter-increment: i;
+  content: counter(i);
+}
+.task.input-group-addon {
+  font-weight: bold;
+  color: white;
+  background-color: #777;
+  font-size: 12px;
+}
+.text-warning {
+  font-weight: bold;
+}
+a {
+  color: black;
+}
+a[href]:after {
+  font-family: 'Glyphicons Halflings';
+  font-size: 9px;
+  content: ' (\e144)';
+  margin-left: -5px;
+}
+h2 {
+  counter-reset: i;
+}
